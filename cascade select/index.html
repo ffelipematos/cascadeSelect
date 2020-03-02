@@ -4,31 +4,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cascade Select</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    
   </head>
-  <style>
-    .form-control {
-      display: block;
-      width: 100%;
-      height: 34px;
-      padding: 6px 12px;
-      font-size: 14px;
-      line-height: 1.42857143;
-      color: #555;
-      background-color: #fff;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-      -webkit-transition: border-color ease-in-out 0.15s,
-        -webkit-box-shadow ease-in-out 0.15s;
-      -o-transition: border-color ease-in-out 0.15s,
-        box-shadow ease-in-out 0.15s;
-      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
-    }
-  </style>
   <body>
     <div class="table-responsive">
-      <table border="0" cellspacing="10" cellpadding="5" style="width: 80%;">
+      <table border="0" cellspacing="10" cellpadding="5" style="width:42%;">
         <tr>
           <td>
             <select id="ddState" class="selectDD form-control">
@@ -48,12 +34,44 @@
       </table>
     </div>
 
+  <!--<div id="marginButton" class="button">
+        <button id="buttonSearch" type="button" class="btn btn-primary">Buscar</button>
+   </div> --> 
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Buscar
+</button>
+
+<!-- Modal PopUp -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Informações Encontradas</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Exibindo Modal
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-success">Confirmar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+<!----------------------- Javascript (PROCESSO DE BUSCA + jQuery) ----------------------------->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="js/main.js"></script>
     <script>
       jQuery(function($){
           var ddCities={
-              'Select State' : ['Select City'],
+              'Select State' : ['Selecione a Cidade'],
               'BA' : ['Salvador', 'Camaçari', 'Lauro de Freitas'],
               'RS' : ['Porto Alegre', 'Pelotas', 'Gramado'],
               'RJ' :  ['Rio de Janeiro', 'Caxias', 'Petropólis'],
