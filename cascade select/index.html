@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cascade Select</title>
+  </head>
+  <style>
+    .form-control {
+      display: block;
+      width: 100%;
+      height: 34px;
+      padding: 6px 12px;
+      font-size: 14px;
+      line-height: 1.42857143;
+      color: #555;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+      -webkit-transition: border-color ease-in-out 0.15s,
+        -webkit-box-shadow ease-in-out 0.15s;
+      -o-transition: border-color ease-in-out 0.15s,
+        box-shadow ease-in-out 0.15s;
+      transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
+    }
+  </style>
+  <body>
+    <div class="table-responsive">
+      <table border="0" cellspacing="10" cellpadding="5" style="width: 80%;">
+        <tr>
+          <td>
+            <select id="ddState" class="selectDD form-control">
+              <option value="Select State">Selecione o Estado</option>
+              <option value="BA">BA</option>
+              <option value="RS">RS</option>
+              <option value="RJ">RJ</option>
+              <option value="PE">PE</option>
+            </select>
+          </td>
+          <td class="tddSelect">
+            <select id="ddCity" class="selectDD form-control">
+              <option value="Select City">Selecione a Cidade</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      jQuery(function($){
+          var ddCities={
+              'Select State' : ['Select City'],
+              'BA' : ['Salvador', 'Camaçari', 'Lauro de Freitas'],
+              'RS' : ['Porto Alegre', 'Pelotas', 'Gramado'],
+              'RJ' :  ['Rio de Janeiro', 'Caxias', 'Petropólis'],
+              'PE' : ['Recife', 'Petrolina', 'Caruaru'],
+          }
+          
+          var $ddCities = $('#ddCity');
+
+          $('#ddState').change(function() {
+              var City = $(this).val(); 
+              var cities = ddCities[City] || [];
+              var cidades = $.map(cities,function(val){
+                  return'<option value="'+val+'">' + val +'</option>';
+              }) .join('');
+              $ddCities.empty().append(cidades);
+            });
+      });
+    </script>
+  </body>
+</html>
